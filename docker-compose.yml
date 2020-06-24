@@ -1,0 +1,13 @@
+version: "3"
+services: 
+    server:
+        build: server/
+        command: node index.js
+        ports: 
+            - "7000:7000"
+    client:
+        build: client/
+        command: node client_ws.js
+        network_mode: host
+        depends_on: 
+            - server

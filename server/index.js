@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const express = require('express');
 const Articles = require('./model/article');
 const app = express();
-const PORT = 7000;
 // const db = "mongodb://localhost:27017/news-vietnamnet";
 
 // mongoose.connect(db, {
@@ -18,7 +17,6 @@ require('./model');
 
 const wss = new WebSocket.Server({
     port: 8080
-
 })
 
 wss.on('connection', async (ws) => {
@@ -61,4 +59,3 @@ async function getByWeb(web) {
     console.log(articles);
     return articles;
 }
-app.listen(PORT, () => { console.log(`Server is running on ${PORT}`) });

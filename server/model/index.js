@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoUri = `mongodb://localhost:27017/news-vietnamnet`;
+const mongoUri = `mongodb://mongodb:27017/news-vietnamnet`;
 
 mongoose.connect(mongoUri, {
   autoIndex: false,

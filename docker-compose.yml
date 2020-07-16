@@ -1,13 +1,23 @@
 version: "3"
 services: 
-    server:
+    ws-server:
         build: server/
         command: node index.js
+        container_name: ws-server
         ports: 
-            - "7000:7000"
+            - "8080:8080"
+        links: 
+            - mongodb
+        depends_on: 
+            - mongodb
     client:
         build: client/
-        command: node client_ws.js
+        container_name: ws-client
+        command: node index.js
         network_mode: host
         depends_on: 
-            - server
+            - ws-server
+    mongodb:
+        image: mongo
+        restart: always
+        container_name: mongodb
